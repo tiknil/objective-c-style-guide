@@ -38,14 +38,9 @@ Perché abbiamo preso certe scelte e non altre? Ecco i concetti che guidano alcu
 ### Lingua ###
 Usare la lingua **Inglese** per il **codice**, quella **Italiana** per i **commenti** e la **documentazione** del codice (ove non espressamente richiesta la lingua inglese)
 
-:+1:
-```
-UIColor *myColor = [UIColor whiteColor];
-```
-:-1: 
-```
-UIColor *mioColore = [UIColor whiteColor];
-```
+:+1: `UIColor *myColor = [UIColor whiteColor];`
+
+:-1: `UIColor *mioColore = [UIColor whiteColor];`
 
 ### Organizzazione ###
 
@@ -108,36 +103,21 @@ Fare riferimento alle [linee guida Apple](https://developer.apple.com/library/ma
 
 I nomi dei metodi e delle variabili devono essere descrittivi, va bene anche se sono lunghi
 
-:+1:
-```
-UIButton *settingsButton;
-```
-:-1:
-```
-UIButton *setBut;
-```
+:+1: `UIButton *settingsButton;`
+
+:-1: `UIButton *setBut;`
 
 Le costanti devono essere *camel-case* con tutte le parole con la prima lettera maiuscola e devono iniziare con il nome della classe a cui fanno riferimento (se lo fanno).
 
-:+1:
-```
-static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
-```
-:-1:
-```
-static NSTimeInterval const fadetime = 1.7;
-```
+:+1: `static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;`
+
+:-1: `static NSTimeInterval const fadetime = 1.7;`
 
 I campi (`@property`) delle classi devono essere *camel-case* con la prima lettera minuscola. Preferire l'auto-sintesi dei campi piuttosto che scrivere manualmente i `@synthesize` a meno che ci sia una buona ragione. 
 
-:+1:
-```
-@property (strong, nonatomic) NSString *descriptiveVariableName;
-```
-:-1:
-```
-id varnm;
-```
+:+1: `@property (strong, nonatomic) NSString *descriptiveVariableName;`
+
+:-1: `id varnm;`
 
 #### Underscores ####
 
