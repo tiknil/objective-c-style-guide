@@ -86,9 +86,9 @@ Raccomandato l'uso dei ```#pragma mark```per raggruppare i metodi in gruppi funz
 - (NSString *)description {}
 ```
 
-Per semplificare l'utilizzo dell'organizzazione del codice come descritto consigliamo di utilizzare lo *snippet* di XCode apposito come descritto nel repo ***REPO XCODE SNIPPETS***: basta digitare ```def``` quando si sta per stendere l'implementazione di una nuova classe
+Per semplificare l'utilizzo dell'organizzazione del codice come descritto consigliamo di utilizzare lo *snippet* di XCode apposito come descritto nel repo [Xcode-snippets](https://github.com/tiknil/xcode-snippets) basta digitare ```def``` quando si sta per stendere l'implementazione di una nuova classe
 
-***INSERIRE GIF ANIMATA UTILIZO SNIPPET IN XCODE***
+![def code snippet](https://github.com/tiknil/xcode-snippets/blob/master/images/def_code_snippet.gif)
 
 ### Commenti ###
 
