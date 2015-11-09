@@ -8,9 +8,18 @@ Non vuole essere l'ennesima riproposizione dello stile di stesura dei progetti i
 
 Sentitevi liberi di dissentire da quanto abbiamo deciso di tenere come stile guida! :wink:
 
+### TL;DR ###
+
+Troppo lunga da leggere? E' solo l'ennesima guida di stile di Obj-C? 
+Ok, passiamo al dunque, nerd: usa i tool che ti elenchiamo per cominciare a 'subire' un po' di codice di qualità: 
+
+1) [XCode snippets](https://github.com/tiknil/xcode-snippets) - dovresti leggere perché usarli, almeno
+
+2) Installa `BBUncrustifyPlugin` tramite [Alcatraz](http://alcatraz.io/) e usa il file `uncrustify.cfg` che trovi nel presente repo. Tranquilli, è tutto ben descritto in [Tools](#tools).
+
 ### References ###
 
-Di seguito le linee guida che abbiamo consultato e a cui facciamo riferimento per la stesura della presente: 
+Di seguito le linee guida che abbiamo consultato e a cui facciamo riferimento per la stesura di questo documento: 
 * [Apple coding guidelines](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html)
 * [Ray Wenderlich Obj-C style guide](https://github.com/raywenderlich/objective-c-style-guide)
 * [NY Times Obj-C style guide](https://github.com/NYTimes/objective-c-style-guide)
@@ -33,7 +42,7 @@ Perché abbiamo preso certe scelte e non altre? Ecco i concetti che guidano alcu
 3. [Commenti](#commenti)
 4. [Naming](#naming)
 
-
+[Tools](#tools)
 
 ### Lingua ###
 Usare la lingua **Inglese** per il **codice**, quella **Italiana** per i **commenti** e la **documentazione** del codice (ove non espressamente richiesta la lingua inglese)
@@ -95,7 +104,26 @@ Per semplificare l'utilizzo dell'organizzazione del codice come descritto consig
 Per scrivere codice di qualità i commenti sono fondamentali: essi rientrano nei [requisiti non funzionali o di qualità (ISO IEC 9126)](https://it.wikipedia.org/wiki/ISO/IEC_9126) di tutti i progetti sofware all'interno della voce "Manutenibilità".
 
 * I commenti, quando necessari, devono spiegare perché una particolare parte di codice fa qualcosa. Ogni commento che è utilizzato dev'essere sempre aggiornato o eliminato.
-* Preferire codice auto-esplicativo (dando nomi significativi alle variabili e ai metodi, vedi [Naming](#naming), se possibile, rispetto ai commenti. Nel dubbio, metterli entrambi
+* Preferire codice auto-esplicativo (dando nomi significativi alle variabili e ai metodi, vedi [Naming](#naming), se possibile, rispetto ai commenti. Nel dubbio, metterli entrambi.
+
+Come commentare? Ecco un ottimo (e breve) articolo su NSHipster relativo alla documentazione Obj-C [Documentation](http://nshipster.com/documentation/)
+```
+/**
+ Questo è un commento
+ */
+```
+
+e
+
+```
+/**
+ Questo è il commento alla dichiarazione di questo metodo che ha come parametro paramValue e che ritorna come risultato resultValue
+ @param paramValue il parametro passato a questo metodo
+ @result resultValue il risultato che viene ritornato x o y in base al parametro
+ */
+```
+
+Non sei sicuro di riuscire a ricordarti sempre come scrivere i commenti? Fatti aiutare dagli [snippets `com`...](https://github.com/tiknil/xcode-snippets)!
 
 ### Naming ###
 
@@ -127,5 +155,21 @@ Fa eccezione l'utilizzo dei campi con *underscore* (`_variableName`) nei metodi 
 
 Le variabili locali **non devono contenere underscore**.
 
+### Tools ###
 
+Per noi è importante trovare i tool che ci permettano di mantenere certe scelte in modo costante e coerente di progetto in progetto. Partecipando ad un interessante *talk* di Anastasia Kazakova (@anastasiak2512) alla #Pragma conf 2015 a Firenze abbiamo visto che IDE come AppCode integrano strumenti per la formattazione del codice in modo avanzato ma tramite alcuni plugin e risorse è possibile avere queste funzionalità anche su XCode. 
 
+Quello che abbiamo trovato più completo e facile da capire è [Uncrustify](http://uncrustify.sourceforge.net/) che in XCode è facilmente intergrabile tramite il plugin [BBUncrustifyPlugin](https://github.com/benoitsan/BBUncrustifyPlugin-Xcode), installabile anch'esso tramite [Alcatraz](http://alcatraz.io/).
+
+Una volta installato basta andare in `Edit > Format Code > BBUncrustifyPlugin preferences`, scegliere come formatter `Uncrustify` e alla voce `Clang style` scegliere `Custom Style (File)` (se lo desiderate, altrimenti scegliete il formattatore che più vi [aggrada](https://www.youtube.com/watch?v=b3mGYIgR5_c)).
+
+Alla voce `Configuration File` dunque scegliere `Create Configuration File` e il vostro editor di testo preferito (sarà indubbiamente [Sublime Text](http://www.sublimetext.com/).
+
+Per utilizzare lo stile delineato in questa guida basta prendere il file `uncrustify.cfg` e copiarlo in una qualsiasi cartella padre della cartella del progetto di XCode che avete aperto. Il consiglio è di avere il file `uncrustify.cfg` nella cartella root dei vostri progetti iOS/OSX. 
+
+Se volete fare le cose per bene, fate così: 
+1) Fate un fork di questo repository e scaricatelo in locale nella cartella `$OBJ_C_STYLE_GUIDE_REPO`
+2) Quindi create un link simbolico al file `uncrustify.cfg` nella cartella root dei vostri progetti iOS/OSX
+```
+ln -s ~/App/iOS/uncrustify.cfg ~/Development/GitHub/objective-c-style-guide/uncrustify.cfg
+```
