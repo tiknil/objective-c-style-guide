@@ -41,6 +41,8 @@ Perché abbiamo preso certe scelte e non altre? Ecco i concetti che guidano alcu
 2. [Organizzazione](#organizzazione)
 3. [Commenti](#commenti)
 4. [Naming](#naming)
+  * [Underscores](#underscores)
+  * [Categories](#categories)
 
 [Tools](#tools)
 
@@ -154,6 +156,20 @@ Quando si usano i campi (`@property`) d'istanza essi devono essere sempre richia
 Fa eccezione l'utilizzo dei campi con *underscore* (`_variableName`) nei metodi `init` o nei metodi getter/setter che ne richiedano l'utilizzo per il corretto funzionamento.
 
 Le variabili locali **non devono contenere underscore**.
+
+#### Categories ####
+
+Le categories devono avere nomi che ne definiscano la funzionalità. Attenzione a non creare categories che fanno uso di altre categories (il debug potrebbe diventare arduo).
+
+:+1: `@interface NSString (StringEncodingDetection)`
+
+:-1: `@interface NSString (Utilities)`
+
+_I metodi delle category devono avere sempre il prefisso seguito da underscore._ Questo limita la possibilità di creare eventuali duplicati di metodi esistenti tra le varie librerie.
+
+`- (NSStringEncoding) sed_detectStringEncoding:(NSString*)string;`
+
+Se hai necessità di esporre dei metodi privati per delle sottoclassi o per fare test crea una categories chiamata `Class+Private`
 
 ### Tools ###
 
