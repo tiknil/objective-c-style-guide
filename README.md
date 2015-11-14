@@ -302,8 +302,11 @@ Alla voce `Configuration File` dunque scegliere `Create Configuration File` e il
 Per utilizzare lo stile delineato in questa guida basta prendere il file `uncrustify.cfg` e copiarlo in una qualsiasi cartella padre della cartella del progetto di XCode che avete aperto. Il consiglio è di avere il file `uncrustify.cfg` nella cartella root dei vostri progetti iOS/OSX. 
 
 Se volete fare le cose per bene, fate così: 
+
 1) Fate un fork di questo repository e scaricatelo in locale nella cartella `$OBJ_C_STYLE_GUIDE_REPO`
+
 2) Quindi create un link simbolico al file `uncrustify.cfg` nella cartella root dei vostri progetti iOS/OSX
+
 ```
 ln -s ~/App/iOS/uncrustify.cfg ~/Development/GitHub/objective-c-style-guide/uncrustify.cfg
 ```
