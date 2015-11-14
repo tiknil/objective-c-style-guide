@@ -308,5 +308,5 @@ Se volete fare le cose per bene, fate così:
 2) Quindi create un link simbolico al file `uncrustify.cfg` nella cartella root dei vostri progetti iOS/OSX
 
 ```
-ln -s ~/App/iOS/uncrustify.cfg ~/Development/GitHub/objective-c-style-guide/uncrustify.cfg
+ln -s $OBJ_C_STYLE_GUIDE_REPO/uncrustify.cfg $IOS_OSX_PROJECTS_ROOT/uncrustify.cfg
 ```
