@@ -310,3 +310,7 @@ Se volete fare le cose per bene, fate così:
 ```
 ln -s $OBJ_C_STYLE_GUIDE_REPO/uncrustify.cfg $IOS_OSX_PROJECTS_ROOT/uncrustify.cfg
 ```
+
+Per formattare un file o le righe selezionate in XCode tramite Uncrustify basterà quindi selezionare `Edit > Format Code > ` e scegliere `Format Selected Files`, `Format Active File` o `Format Selected Lines`. 
+
+Puoi impostare gli shortcut da tastiera semplicemente nell'app `Preferences` di sistema: ![KeyBindings](http://cl.ly/image/1g3s3c3o381B/Schermata%202015-11-14%20alle%2010.35.03.png)
