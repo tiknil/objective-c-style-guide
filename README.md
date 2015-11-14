@@ -41,9 +41,12 @@ Perché abbiamo preso certe scelte e non altre? Ecco i concetti che guidano alcu
 2. [Organizzazione](#organizzazione)
 3. [Commenti](#commenti)
 4. [Naming](#naming)
+  * [Dichiarazione dei metodi](#dichiarazione-dei-metodi)
+  * [Variabili](variabili)
+  * [Attributi delle `@property`](#attributi-delle-property)
   * [Underscores](#underscores)
   * [Categories](#categories)
-
+ 
 [Tools](#tools)
 
 ### Lingua ###
@@ -173,6 +176,82 @@ Non usare le parole 'and' e 'with' o similari, come descritto in questi esempi:
 - (instancetype) initWith:(int)width and:(int)height;  // Never do this.
 ```
 
+#### Variabili ####
+
+Le variabili devono essere il più descrittive possibile. L'uso di variabili con una sola lettera è ammesso solo per i cicli `for`.
+
+Dove si mette l'asterisco per le variabili che puntano ad un oggetto? 
+
+:+1: `NSString *text`
+
+:-1: `NSString* text` or `NSString * text` (tranne che per le costanti)
+
+Si preferisce l'uso delle `@property` private piuttosto che d'istanza. Per `@property` private si intende quelle con definizione nel file `.m` in una categoria detta **anonima** (indicata dal fatto che è descritta con `()`): 
+
+```
+interface RWTDetailViewController ()
+
+@property (strong, nonatomic) GADBannerView *googleAdView;
+@property (strong, nonatomic) ADBannerView *iAdView;
+@property (strong, nonatomic) UIWebView *adXWebView;
+
+@end
+```
+
+Si preferisce usare le `@property` private piuttosto che i campi d'istanza
+
+:+1:
+
+```
+@interface RWTTutorial : NSObject
+
+@property (strong, nonatomic) NSString *tutorialName;
+
+@end
+```
+
+:-1:
+
+```
+@interface RWTTutorial : NSObject {
+  NSString *tutorialName;
+}
+```
+
+Come descritto in [Underscores](#underscores) si preferisce non accedere direttamente alle `@property` se non nei metodi di 'Lifecicle' dell'oggetto (`init`, `dealloc`, etc) e nei 'custom accessors'.
+
+#### Attributi delle `@property` ####
+
+Gli attributi delle property devono essere scritti perché servono ed aiutano chi legge il codice a comprenderlo meglio. L'ordine degli attributi deve essere: storage > atomicity così da essere coerente con il codice generato da Interface Builder quando si trascinano i collegamenti agli elementi UI. 
+
+:+1:
+
+```
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) NSString *tutorialName;
+```
+
+:-1:
+
+```
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nonatomic) NSString *tutorialName;
+```
+
+Preferire **`strong`** a **`retain`** (che sono la stessa cosa: [SO answer](http://stackoverflow.com/questions/8927727/objective-c-arc-strong-vs-retain-and-weak-vs-assign) - [Apple Doc](https://developer.apple.com/library/mac/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)) per migliore formattazione del codice
+
+Usare sempre **`weak`** per gli oggetti `IBOutlet`
+
+La [RW Obj-C style guide](https://github.com/raywenderlich/objective-c-style-guide/blob/master/README.md#error-handling) suggerisce di utilizzare **`copy`** piuttosto di **`strong`** per avere la certezza che la `@property` non venga mutata una volta assegnata. Chiaramente dipende dal contesto, quindi valutate di conseguenza
+
+#### Underscores ####
+
+Quando si usano i campi (`@property`) d'istanza essi devono essere sempre richiamati usando `self.`. Questo rende più evidente in maniera visiva l'utilizzo dei campi d'istanza.
+
+Fa eccezione l'utilizzo dei campi con *underscore* (`_variableName`) nei metodi `init` o nei metodi getter/setter che ne richiedano l'utilizzo per il corretto funzionamento.
+
+Le variabili locali **non devono contenere underscore**.
+
 #### Categories ####
 
 Le categories devono avere nomi che ne definiscano la funzionalità. Attenzione a non creare categories che fanno uso di altre categories (il debug potrebbe diventare arduo).
@@ -186,15 +265,6 @@ _I metodi delle category devono avere sempre il prefisso seguito da underscore._
 `- (NSStringEncoding) sed_detectStringEncoding:(NSString*)string;`
 
 Se hai necessità di esporre dei metodi privati per delle sottoclassi o per fare test crea una categories chiamata `Class+Private`
-
-#### Underscores ####
-
-Quando si usano i campi (`@property`) d'istanza essi devono essere sempre richiatami usando `self.`. Questo rende più evidente in maniera visiva l'utilizzo dei campi d'istanza.
-
-Fa eccezione l'utilizzo dei campi con *underscore* (`_variableName`) nei metodi `init` o nei metodi getter/setter che ne richiedano l'utilizzo per il corretto funzionamento.
-
-Le variabili locali **non devono contenere underscore**.
-
 
 ### Tools ###
 
