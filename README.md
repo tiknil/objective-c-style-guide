@@ -46,7 +46,8 @@ Perché abbiamo preso certe scelte e non altre? Ecco i concetti che guidano alcu
   * [Attributi delle `@property`](#attributi-delle-property)
   * [Underscores](#underscores)
   * [Categories](#categories)
- 
+5. [Literals](#literals)
+
 [Tools](#tools)
 
 ### Lingua ###
@@ -240,7 +241,7 @@ Gli attributi delle property devono essere scritti perché servono ed aiutano ch
 
 Preferire **`strong`** a **`retain`** (che sono la stessa cosa: [SO answer](http://stackoverflow.com/questions/8927727/objective-c-arc-strong-vs-retain-and-weak-vs-assign) - [Apple Doc](https://developer.apple.com/library/mac/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html)) per migliore formattazione del codice
 
-Usare sempre **`weak`** per gli oggetti `IBOutlet`
+Usare sempre **`weak`** per gli oggetti `IBOutlet`. Ti chiedi perché? Fattelo spiegare da [NSHipster](http://nshipster.com/ibaction-iboutlet-iboutletcollection/) e dalla [Resource Programming Guide section on Nib Files di Apple](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/LoadingResources/CocoaNibs/CocoaNibs.html). 
 
 La [RW Obj-C style guide](https://github.com/raywenderlich/objective-c-style-guide/blob/master/README.md#error-handling) suggerisce di utilizzare **`copy`** piuttosto di **`strong`** per avere la certezza che la `@property` non venga mutata una volta assegnata. Chiaramente dipende dal contesto, quindi valutate di conseguenza
 
@@ -265,6 +266,28 @@ _I metodi delle category devono avere sempre il prefisso seguito da underscore._
 `- (NSStringEncoding) sed_detectStringEncoding:(NSString*)string;`
 
 Se hai necessità di esporre dei metodi privati per delle sottoclassi o per fare test crea una categories chiamata `Class+Private`
+
+### Literals ###
+
+Preferire sempre l'uso dei literals piuttosto delle descrizioni estese per gli oggetti del framework, in particolare `NSString`, `NSDictionary`, `NSArray` e `NSNumber`: 
+
+:+1:
+
+```
+NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
+NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
+NSNumber *shouldUseLiterals = @YES;
+NSNumber *buildingStreetNumber = @10018;
+```
+
+:-1:
+
+```
+NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
+NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
+NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
+NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018];
+```
 
 ### Tools ###
 
