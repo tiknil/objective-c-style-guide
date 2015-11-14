@@ -149,13 +149,29 @@ I campi (`@property`) delle classi devono essere *camel-case* con la prima lette
 
 :-1: `id varnm;`
 
-#### Underscores ####
+#### Dichiarazione dei metodi ####
 
-Quando si usano i campi (`@property`) d'istanza essi devono essere sempre richiatami usando `self.`. Questo rende più evidente in maniera visiva l'utilizzo dei campi d'istanza.
+I nomi dei metodi devono essere descrittivi, come già detto nel paragrafo precedente. I parametri formali del metodo devono essere separati da uno spazio (come da stile Apple). Aggiungere sempre un nome per il parametro e descrivere a cosa serve quel parametro.
+Non usare le parole 'and' e 'with' o similari, come descritto in questi esempi:
 
-Fa eccezione l'utilizzo dei campi con *underscore* (`_variableName`) nei metodi `init` o nei metodi getter/setter che ne richiedano l'utilizzo per il corretto funzionamento.
+:+1:
 
-Le variabili locali **non devono contenere underscore**.
+```
+- (void) setExampleText:(NSString *)text image:(UIImage *)image;
+- (void) sendAction:(SEL)aSelector to:(id)anObject forAllCells:(BOOL)flag;
+- (id) viewWithTag:(NSInteger)tag;
+- (instancetype) initWithWidth:(CGFloat)width height:(CGFloat)height;
+```
+
+:-1:
+
+```
+- (void) setT:(NSString *)text i:(UIImage *)image;
+- (void) sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;
+- (id) taggedView:(NSInteger)tag;
+- (instancetype) initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
+- (instancetype) initWith:(int)width and:(int)height;  // Never do this.
+```
 
 #### Categories ####
 
@@ -170,6 +186,15 @@ _I metodi delle category devono avere sempre il prefisso seguito da underscore._
 `- (NSStringEncoding) sed_detectStringEncoding:(NSString*)string;`
 
 Se hai necessità di esporre dei metodi privati per delle sottoclassi o per fare test crea una categories chiamata `Class+Private`
+
+#### Underscores ####
+
+Quando si usano i campi (`@property`) d'istanza essi devono essere sempre richiatami usando `self.`. Questo rende più evidente in maniera visiva l'utilizzo dei campi d'istanza.
+
+Fa eccezione l'utilizzo dei campi con *underscore* (`_variableName`) nei metodi `init` o nei metodi getter/setter che ne richiedano l'utilizzo per il corretto funzionamento.
+
+Le variabili locali **non devono contenere underscore**.
+
 
 ### Tools ###
 
