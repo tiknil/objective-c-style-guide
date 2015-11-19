@@ -199,7 +199,7 @@ interface RWTDetailViewController ()
 @end
 ```
 
-Si preferisce usare le `@property` private piuttosto che i campi d'istanza
+Si preferisce usare le `@property` private piuttosto che i campi d'istanza. Questo vale anche per i campi `IBOutlet` generati (o predisposti) da drag&drop a partire da Interface Builder: di default vanno messi come `@property` privata nel file `.m`; qualora sia necessario averli pubblici, allora verranno spostati nel `.h`.
 
 :+1:
 
