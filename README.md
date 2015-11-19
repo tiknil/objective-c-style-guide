@@ -38,7 +38,7 @@ Perché abbiamo preso certe scelte e non altre? Ecco i concetti che guidano alcu
 
 ### Sommario ###
 1. [Lingua](#lingua)
-2. [Organizzazione](#organizzazione)
+2. [Organizzazione implementazione delle classi](#organizzazione-implementazione-delle-classi)
 3. [Commenti](#commenti)
 4. [Naming](#naming)
   * [Dichiarazione dei metodi](#dichiarazione-dei-metodi)
@@ -57,7 +57,7 @@ Usare la lingua **Inglese** per il **codice**, quella **Italiana** per i **comme
 
 :-1: `UIColor *mioColore = [UIColor whiteColor];`
 
-### Organizzazione ###
+### Organizzazione implementazione delle classi ###
 
 Raccomandato l'uso dei ```#pragma mark```per raggruppare i metodi in gruppi funzionali e legati all'implementazione dei protocolli/delegati seguendo la struttura seguente (da [RW Obj-C style guide](https://github.com/raywenderlich/objective-c-style-guide)): 
 
@@ -104,7 +104,7 @@ Raccomandato l'uso dei ```#pragma mark```per raggruppare i metodi in gruppi funz
 - (NSString *)description {}
 ```
 
-Per semplificare l'utilizzo dell'organizzazione del codice come descritto consigliamo di utilizzare lo *snippet* di XCode apposito come descritto nel repo [Xcode-snippets](https://github.com/tiknil/xcode-snippets) basta digitare ```def``` quando si sta per stendere l'implementazione di una nuova classe
+Per semplificare l'utilizzo dell'organizzazione del codice come descritto consigliamo di utilizzare lo *snippet* di XCode apposito come descritto nel repo [Xcode-snippets](https://github.com/tiknil/xcode-snippets): basta digitare ```def``` quando si sta per stendere l'implementazione di una nuova classe.
 
 ![def code snippet](https://github.com/tiknil/xcode-snippets/blob/master/images/def_code_snippet.gif)
 
