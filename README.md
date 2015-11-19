@@ -62,6 +62,9 @@ Usare la lingua **Inglese** per il **codice**, quella **Italiana** per i **comme
 Raccomandato l'uso dei ```#pragma mark```per raggruppare i metodi in gruppi funzionali e legati all'implementazione dei protocolli/delegati seguendo la struttura seguente (da [RW Obj-C style guide](https://github.com/raywenderlich/objective-c-style-guide)): 
 
 ```
+#pragma mark - Class methods
++ (instancetype) shared;
+
 #pragma mark - Lifecycle
 
 - (instancetype)init {}
